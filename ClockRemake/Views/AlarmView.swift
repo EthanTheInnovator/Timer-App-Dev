@@ -9,8 +9,36 @@
 import SwiftUI
 
 struct AlarmView: View {
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            AlarmListView()
+        }
+    }
+}
+
+struct AlarmListView: View {
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Alarm.time, ascending: true)],
+        animation: .default)
+    var alarms: FetchedResults<Alarm>
+
+    @Environment(\.managedObjectContext)
+    var viewContext
+    
+    var body: some View {
+        List {
+            ForEach(alarms, id: \.self) { alarm in
+                HStack {
+                    VStack {
+                        Text("9:21AM")
+//                        Text(alarm.name)
+                    }
+                    Spacer()
+                    
+                }
+            }
+        }
     }
 }
 

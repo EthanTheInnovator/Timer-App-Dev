@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct TabControllerView: View {
     @State private var selection = 0
  
     var body: some View {
@@ -56,6 +56,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        TabControllerView()
     }
 }
