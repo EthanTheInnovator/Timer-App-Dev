@@ -17,6 +17,7 @@ struct ContentView: View {
                 .tabItem {
                     VStack {
                         Image(systemName: "globe")
+                            .font(.system(size: 25))
                         Text("World Clock")
                     }
             }
@@ -25,6 +26,7 @@ struct ContentView: View {
                 .tabItem {
                     VStack {
                         Image(systemName: "alarm.fill")
+                            .font(.system(size: 25))
                         Text("Alarms")
                     }
             }
@@ -33,14 +35,16 @@ struct ContentView: View {
                 .tabItem {
                     VStack {
                         Image(systemName: "stopwatch.fill")
+                            .font(.system(size: 25))
                         Text("Stopwatch")
                     }
             }
             .tag(2)
-            StopwatchView()
+            TimerView()
                 .tabItem {
                     VStack {
                         Image(systemName: "timer")
+                            .font(.system(size: 25))
                         Text("Timer")
                     }
             }
