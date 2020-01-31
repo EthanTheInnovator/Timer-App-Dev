@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E9AD2A3023E4657D00200451"
-               BuildableName = "ClockRemake.app"
+               BuildableName = "Clock.app"
                BlueprintName = "ClockRemake"
                ReferencedContainer = "container:ClockRemake.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E9AD2A3023E4657D00200451"
-            BuildableName = "ClockRemake.app"
+            BuildableName = "Clock.app"
             BlueprintName = "ClockRemake"
             ReferencedContainer = "container:ClockRemake.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E9AD2A3023E4657D00200451"
-            BuildableName = "ClockRemake.app"
+            BuildableName = "Clock.app"
             BlueprintName = "ClockRemake"
             ReferencedContainer = "container:ClockRemake.xcodeproj">
          </BuildableReference>
