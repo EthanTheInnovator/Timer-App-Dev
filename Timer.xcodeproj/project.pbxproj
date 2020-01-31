@@ -14,6 +14,10 @@
 		E9AD2A3E23E4657F00200451 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9AD2A3D23E4657F00200451 /* Assets.xcassets */; };
 		E9AD2A4123E4657F00200451 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9AD2A4023E4657F00200451 /* Preview Assets.xcassets */; };
 		E9AD2A4423E4657F00200451 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9AD2A4223E4657F00200451 /* LaunchScreen.storyboard */; };
+		E9AD2A4C23E4664000200451 /* WorldClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A4B23E4664000200451 /* WorldClockView.swift */; };
+		E9AD2A4E23E4664D00200451 /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A4D23E4664D00200451 /* AlarmView.swift */; };
+		E9AD2A5023E4665400200451 /* StopwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A4F23E4665400200451 /* StopwatchView.swift */; };
+		E9AD2A5223E4665B00200451 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A5123E4665B00200451 /* TimerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		E9AD2A4023E4657F00200451 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E9AD2A4323E4657F00200451 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9AD2A4523E4657F00200451 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9AD2A4B23E4664000200451 /* WorldClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockView.swift; sourceTree = "<group>"; };
+		E9AD2A4D23E4664D00200451 /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
+		E9AD2A4F23E4665400200451 /* StopwatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchView.swift; sourceTree = "<group>"; };
+		E9AD2A5123E4665B00200451 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +68,7 @@
 			children = (
 				E9AD2A3423E4657D00200451 /* AppDelegate.swift */,
 				E9AD2A3623E4657D00200451 /* SceneDelegate.swift */,
-				E9AD2A3B23E4657D00200451 /* ContentView.swift */,
+				E9AD2A5323E4667300200451 /* Views */,
 				E9AD2A3D23E4657F00200451 /* Assets.xcassets */,
 				E9AD2A4223E4657F00200451 /* LaunchScreen.storyboard */,
 				E9AD2A4523E4657F00200451 /* Info.plist */,
@@ -76,6 +84,18 @@
 				E9AD2A4023E4657F00200451 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E9AD2A5323E4667300200451 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E9AD2A3B23E4657D00200451 /* ContentView.swift */,
+				E9AD2A4B23E4664000200451 /* WorldClockView.swift */,
+				E9AD2A4D23E4664D00200451 /* AlarmView.swift */,
+				E9AD2A4F23E4665400200451 /* StopwatchView.swift */,
+				E9AD2A5123E4665B00200451 /* TimerView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,9 +169,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9AD2A4C23E4664000200451 /* WorldClockView.swift in Sources */,
 				E9AD2A3523E4657D00200451 /* AppDelegate.swift in Sources */,
 				E9AD2A3A23E4657D00200451 /* Timer.xcdatamodeld in Sources */,
 				E9AD2A3C23E4657D00200451 /* ContentView.swift in Sources */,
+				E9AD2A4E23E4664D00200451 /* AlarmView.swift in Sources */,
+				E9AD2A5023E4665400200451 /* StopwatchView.swift in Sources */,
+				E9AD2A5223E4665B00200451 /* TimerView.swift in Sources */,
 				E9AD2A3723E4657D00200451 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
