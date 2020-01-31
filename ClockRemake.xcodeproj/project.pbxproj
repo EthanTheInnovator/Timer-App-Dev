@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E9AD2A3123E4657D00200451 /* ClockRemake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClockRemake.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9AD2A3123E4657D00200451 /* Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9AD2A3423E4657D00200451 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9AD2A3623E4657D00200451 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E9AD2A3923E4657D00200451 /* Timer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Timer.xcdatamodel; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 		E9AD2A3223E4657D00200451 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E9AD2A3123E4657D00200451 /* ClockRemake.app */,
+				E9AD2A3123E4657D00200451 /* Clock.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,7 +115,7 @@
 			);
 			name = ClockRemake;
 			productName = Timer;
-			productReference = E9AD2A3123E4657D00200451 /* ClockRemake.app */;
+			productReference = E9AD2A3123E4657D00200451 /* Clock.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -322,7 +322,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = bProductions.appDev.ClockRemake;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Clock;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -342,7 +342,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = bProductions.appDev.ClockRemake;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Clock;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
