@@ -31,7 +31,8 @@ struct TimerView: View {
         func countdownString(from date: Date) -> String {
             let calendar = Calendar(identifier: .gregorian)
             let components = calendar.dateComponents([.day, .hour, .minute, .second], from: currentDate, to: date)
-            let resultString: String = ("Days: \(components.day ?? 00) \nHours: \(components.hour ?? 0) \nMinutes: \(components.minute ?? 0) \nSeconds: \(components.second ?? 0)")
+            let resultString: String = ("\(components.hour ?? 0 + (24 * (components.day ?? 0))) : \(components.minute ?? 0) : \(components.second ?? 0)")
+            //makes a result start with proper formatting, adding days * 24 in hours to account for days in hours, Format: Hours : Minutes : Seconds
             return resultString
         }
     }
