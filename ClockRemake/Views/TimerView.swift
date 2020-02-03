@@ -26,7 +26,6 @@ struct TimerView: View {
             .onAppear(perform: { // called when text appears
                 _ = self.timer
             })
-            
         }
         //makes a countdown string using a start and end date
         func countdownString(from date: Date) -> String {

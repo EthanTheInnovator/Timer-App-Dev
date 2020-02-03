@@ -8,10 +8,32 @@
 
 import SwiftUI
 struct StopwatchView: View {
+    @State var currentDate: Date = Date() //starting date, @state recreates interface whenever value is changed
+    let firstDate: Date = Date()
+    var timer: Timer {
+       Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
+            self.currentDate = Date()
+        }
+    }
+    //updates text on screen using given timer invervals
     var body: some View {
-        Text("Stopwatch != Timer")
+        VStack {
+            Text(countupString(from: firstDate))
+            .font(.title) //sets the font to a "title" font
+        }
+        .onAppear(perform: { // called when text appears
+            _ = self.timer
+        })
+    }
+    //makes a string that counts up using a start and end date
+    func countupString(from date: Date) -> String {
+        let calendar = Calendar(identifier: .gregorian)
+        let components = calendar.dateComponents([.day, .hour, .minute, .second], from: date, to: currentDate)
+        let resultString: String = ("Days: \(components.day ?? 00) \nHours: \(components.hour ?? 0) \nMinutes: \(components.minute ?? 0) \nSeconds: \(components.second ?? 0)")
+        return resultString
     }
 }
+
 
 struct Stopwatch_Previews: PreviewProvider {
     static var previews: some View {
