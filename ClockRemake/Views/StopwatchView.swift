@@ -11,9 +11,9 @@ import SwiftUI
 struct StopwatchView: View {
     //refreshes timer every 1 second + creates timer
     @State var currentDate: Date = Date() //starting date, @state recreates interface whenever value is changed
-    let refDate: Date = Date() //reference date
+    let refDate: Date = Date(timeIntervalSinceNow: 10000)
     var timer: Timer {
-        return Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
+       Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
             self.currentDate = Date()
         }
     }
@@ -24,7 +24,7 @@ struct StopwatchView: View {
             .font(.title) //sets the font to a "title" font
         }
         .onAppear(perform: { // called when text appears
-            //initializes timer
+            _ = self.timer
         })
         
     }
@@ -37,8 +37,8 @@ struct StopwatchView: View {
     }
 }
 
-//struct Stopwatch_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StopwatchView(refDate: Date(timeInterval: 10000, since: Date())) //refDate testing value
-//    }
-//}
+struct Stopwatch_Previews: PreviewProvider {
+    static var previews: some View {
+        StopwatchView()
+    }
+}
