@@ -12,6 +12,7 @@ struct TimerView: View {
     //refreshes timer every 1 second + creates timer
         @State var currentDate: Date = Date() //starting date, @state recreates interface whenever value is changed
         @State private var showAlert = false //if alert is being shown
+        @State private var userInput: String = "" //gets users input
         let refDate: Date = Date(timeIntervalSinceNow: 10)
         let alert: Alert = Alert(title: Text("Timer Over"), message: Text(""), dismissButton: .default(Text("OK")))
         var timer: Timer {
@@ -19,16 +20,21 @@ struct TimerView: View {
                 self.currentDate = Date()
             }
         }
-        //updates text on screen using given timer invervals
         var body: some View {
-            VStack {
-                Text(countdownString(from: refDate))
-                .font(.title) //sets the font to a "title" font
-                .alert(isPresented: $showAlert, content: { self.alert }) //calls alert if at 0
+            VStack { //Just tells user to input time
+                Text("Input timer time (in seconds) below")
+                VStack { // Gets time from user
+                    TextField("Put time here", text: $userInput)
+                    VStack { //updates text on screen using given timer invervals
+                        Text(countdownString(from: refDate))
+                        .font(.title) //sets the font to a "title" font
+                        .alert(isPresented: $showAlert, content: { self.alert }) //calls alert if at 0
+                    }
+                    .onAppear(perform: { // called when text appears
+                        _ = self.timer
+                })
+                }
             }
-            .onAppear(perform: { // called when text appears
-                _ = self.timer
-            })
         }
         //makes a countdown string using a start and end date
         func countdownString(from date: Date) -> String {

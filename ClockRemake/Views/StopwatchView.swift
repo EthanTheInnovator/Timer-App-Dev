@@ -18,12 +18,27 @@ struct StopwatchView: View {
     //updates text on screen using given timer invervals
     var body: some View {
         VStack {
-            Text(countupString(from: firstDate))
-            .font(.title) //sets the font to a "title" font
+            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                Text("Start")
+            }
+            VStack {
+                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                    Text("Stop")
+                }
+                VStack {
+                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) { //lets user reset clock
+                        Text("Reset")
+                    }
+                    VStack { //counts up when active
+                        Text(countupString(from: firstDate))
+                        .font(.title) //sets the font to a "title" font
+                    }
+                    .onAppear(perform: { // called when text appears
+                        _ = self.timer
+                })
+                }
+            }
         }
-        .onAppear(perform: { // called when text appears
-            _ = self.timer
-        })
     }
     //makes a string that counts up using a first and current date
     func countupString(from date: Date) -> String {
