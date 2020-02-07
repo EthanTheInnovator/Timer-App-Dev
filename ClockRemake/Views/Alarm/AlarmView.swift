@@ -75,9 +75,11 @@ struct AlarmCell: View {
     
     var body: some View {
         HStack {
-            VStack {
-                Text("\(alarm.name ?? "")")
+            VStack(alignment: .leading, spacing: nil) {
+                LargeTimeView(time: alarm.time, timeZone: TimeZone.current)
+                Text(alarm.name ?? "Alarm")
             }
+                
             Spacer()
             Toggle(isOn: $alarm.isOn) {
                 Text("")

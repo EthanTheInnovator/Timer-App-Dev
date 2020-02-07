@@ -64,35 +64,9 @@ struct IbraTimeZoneRow: View {
                     Spacer()
                 }
             }
-            VStack {
-                HStack(alignment: .firstTextBaseline, spacing: 0) {
-                    Spacer()
-                    Text(getCurrentTimeFormatted(in: timeZone.zone))
-                        .fontWeight(.light)
-                        .font(.system(size: 50))
-                        .foregroundColor(.secondary)
-                    Text(getCurrentAMSymbol(in: timeZone.zone))
-//                    .fontWeight(.light)
-                    .font(.system(size: 25))
-                    .foregroundColor(.secondary)
-                }
-            }
+            LargeTimeView(time: Date(), timeZone: TimeZone(abbreviation: timeZone.zone))
         }
         .padding(8)
-    }
-    
-    func getCurrentTimeFormatted(in timeZone: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: timeZone)
-        dateFormatter.dateFormat = "h:mm"
-        return dateFormatter.string(from: Date())
-    }
-    
-    func getCurrentAMSymbol(in timeZone: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: timeZone)
-        dateFormatter.dateFormat = "a"
-        return dateFormatter.string(from: Date())
     }
     
 }
