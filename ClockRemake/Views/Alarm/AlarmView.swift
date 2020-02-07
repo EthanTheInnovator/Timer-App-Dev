@@ -30,6 +30,7 @@ struct AlarmView: View {
                     }
                     ) {
                         Image(systemName: "plus")
+                            .padding(5)
                     }
             )
                 .sheet(isPresented: $showNewAlarmView) {

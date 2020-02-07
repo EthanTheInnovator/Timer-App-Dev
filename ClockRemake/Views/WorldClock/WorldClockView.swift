@@ -32,6 +32,7 @@ struct WorldClockView: View {
                 
             }, label: {
                 Image(systemName: "plus")
+                    .padding(5)
             }))
         }
     }
