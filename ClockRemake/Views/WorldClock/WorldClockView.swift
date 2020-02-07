@@ -14,6 +14,8 @@ struct WorldClockView: View {
                  IbraTimeZone(zone: "GMT", location: "London"),
                  IbraTimeZone(zone: "EDT", location: "NYC")]
     
+    @State private var showModal: Bool = false
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -29,10 +31,12 @@ struct WorldClockView: View {
             }, label: {
                 Text("Edit")
             }), trailing: Button(action: {
-                
+                self.showModal = true
             }, label: {
                 Image(systemName: "plus")
-            }))
+            }).sheet(isPresented: self.$showModal) {
+                WorldCityPickerView()
+            })
         }
     }
 }

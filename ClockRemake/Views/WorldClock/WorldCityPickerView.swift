@@ -38,6 +38,7 @@ struct WorldCityPickerView: View {
     
     @State private var searchText = ""
     @State private var showCancelButton: Bool = false
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
         
@@ -79,7 +80,12 @@ struct WorldCityPickerView: View {
                 
                 List {
                     ForEach(array.filter{searchText == "" || $0.contains(searchText)}, id:\.self) {
-                        searchText in Text(searchText)
+                        searchText in
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Text(searchText)
+                        }
                     }
                 }
                 .navigationBarTitle(Text("Search"))
