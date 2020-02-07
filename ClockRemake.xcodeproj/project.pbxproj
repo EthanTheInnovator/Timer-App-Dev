@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E962602323EDC8CD00E71BED /* LargeTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E962602223EDC8CD00E71BED /* LargeTimeView.swift */; };
 		0FE57E9A23EDB3E0006D994F /* WorldCityPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE57E9923EDB3E0006D994F /* WorldCityPickerView.swift */; };
+		E962602323EDC8CD00E71BED /* LargeTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E962602223EDC8CD00E71BED /* LargeTimeView.swift */; };
 		E98A978623E87512001AD7AD /* NewAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98A978523E87512001AD7AD /* NewAlarmView.swift */; };
 		E98A978823E87AB9001AD7AD /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98A978723E87AB9001AD7AD /* Alarm.swift */; };
 		E9AD2A3523E4657D00200451 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A3423E4657D00200451 /* AppDelegate.swift */; };
@@ -25,8 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E962602223EDC8CD00E71BED /* LargeTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeTimeView.swift; sourceTree = "<group>"; };
 		0FE57E9923EDB3E0006D994F /* WorldCityPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldCityPickerView.swift; sourceTree = "<group>"; };
+		E962602223EDC8CD00E71BED /* LargeTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeTimeView.swift; sourceTree = "<group>"; };
 		E98A978523E87512001AD7AD /* NewAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlarmView.swift; sourceTree = "<group>"; };
 		E98A978723E87AB9001AD7AD /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Alarm.swift; path = ClockRemake/Views/Alarm.swift; sourceTree = SOURCE_ROOT; };
 		E9AD2A3123E4657D00200451 /* Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clock.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +73,15 @@
 			path = Alarm;
 			sourceTree = "<group>";
 		};
+		E962602423EDCD3C00E71BED /* WorldClock */ = {
+			isa = PBXGroup;
+			children = (
+				E9AD2A4B23E4664000200451 /* WorldClockView.swift */,
+				0FE57E9923EDB3E0006D994F /* WorldCityPickerView.swift */,
+			);
+			path = WorldClock;
+			sourceTree = "<group>";
+		};
 		E9AD2A2823E4657D00200451 = {
 			isa = PBXGroup;
 			children = (
@@ -116,12 +125,11 @@
 			isa = PBXGroup;
 			children = (
 				E9AD2A3B23E4657D00200451 /* TabControllerView.swift */,
-				E9AD2A4B23E4664000200451 /* WorldClockView.swift */,
+				E962602423EDCD3C00E71BED /* WorldClock */,
 				E926FEFD23EDB6F90067E33D /* Alarm */,
 				E9AD2A4F23E4665400200451 /* StopwatchView.swift */,
 				E9AD2A5123E4665B00200451 /* TimerView.swift */,
 				E962602223EDC8CD00E71BED /* LargeTimeView.swift */,
-				0FE57E9923EDB3E0006D994F /* WorldCityPickerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
