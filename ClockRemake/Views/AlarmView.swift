@@ -36,6 +36,11 @@ struct AlarmView: View {
                     .accentColor(Color(.systemPurple))
                     .environment(\.managedObjectContext, self.viewContext)
             }
+            .onAppear {
+                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (authorized, error) in
+                    print("Notifications Authorized: \(authorized)")
+                }
+            }
         }
     }
 }
@@ -54,8 +59,10 @@ struct AlarmListView: View {
                         VStack {
                             Text("\(alarm.name ?? "")")
                         }
-                        Spacer()
-                        
+//                        Spacer()
+//                        Toggle(isOn: $alarm.isActive) {
+//                            Text("test")
+//                        }
                     }
                 }
             }

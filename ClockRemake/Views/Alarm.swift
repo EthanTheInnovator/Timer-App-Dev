@@ -19,6 +19,7 @@ extension Alarm {
         if name == "" {
             newAlarm.name = "Alarm"
         }
+        newAlarm.uuid = UUID()
         newAlarm.time = time
         newAlarm.registerNotification()
         
@@ -45,13 +46,19 @@ extension Alarm {
             
             content.body = getTimeString()
             
-            let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.month, .year, .day, .hour, .minute], from: notifcationDate), repeats: false)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.month, .year, .day, .hour, .minute, .second], from: notifcationDate), repeats: false)
             
             
             let request = UNNotificationRequest(identifier: self.uuid?.uuidString ?? "", content: content, trigger: trigger)
+            print(notifcationDate)
             UNUserNotificationCenter.current().add(request) { (error) in
                 print(error)
             }
+        }
+    }
+    
+    func cancelNotification() {
+        if let uuidString = uuid?.uuidString { UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [uuidString])
         }
     }
     
