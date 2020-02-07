@@ -2,7 +2,7 @@
 //  WorldClockView.swift
 //  Timer
 //
-//  Created by Ethan Humphrey on 1/31/20.
+//  Created by Ibrahim Syed on 1/31/20.
 //  Copyright © 2020 🅱️ Productions. All rights reserved.
 //
 
@@ -10,7 +10,9 @@ import SwiftUI
 
 struct WorldClockView: View {
     
-    let zones = [IbraTimeZone(zone: ""), IbraTimeZone(zone: ""), IbraTimeZone(zone: "")]
+    let zones = [IbraTimeZone(zone: "\(TimeZone.current.abbreviation() ?? "")", location: "Randolph"),
+                 IbraTimeZone(zone: "GMT", location: "London"),
+                 IbraTimeZone(zone: "EDT", location: "NYC")]
     
     var body: some View {
         NavigationView {
@@ -25,11 +27,11 @@ struct WorldClockView: View {
             .navigationBarItems(leading: Button(action: {
                 
             }, label: {
-                Text("hi")
+                Text("Edit")
             }), trailing: Button(action: {
                 
             }, label: {
-                Text("hi2")
+                Image(systemName: "plus")
             }))
         }
     }
@@ -44,22 +46,53 @@ struct WorldClockView_Previews: PreviewProvider {
 struct IbraTimeZone: Identifiable {
     var id = UUID()
     var zone: String
+    var location: String
 }
 
 struct IbraTimeZoneRow: View {
     @State var timeZone: IbraTimeZone
-    @State private var showGreeting = true
     
     var body: some View {
         HStack {
-            Text("Here is the zone \(timeZone.zone)")
-            Toggle(isOn: $showGreeting) {
-                Text("Meow")
-            }.padding()
-            
-            if showGreeting {
-                Text("Test")
+            VStack {
+                HStack {
+                    Text(timeZone.location)
+                    Spacer()
+                }
+                HStack {
+                    Text("\(timeZone.zone)")
+                    Spacer()
+                }
+            }
+            VStack {
+                HStack(alignment: .firstTextBaseline, spacing: 0) {
+                    Spacer()
+                    Text(getCurrentTimeFormatted(in: timeZone.zone))
+                        .fontWeight(.light)
+                        .font(.system(size: 50))
+                        .foregroundColor(.secondary)
+                    Text(getCurrentAMSymbol(in: timeZone.zone))
+//                    .fontWeight(.light)
+                    .font(.system(size: 25))
+                    .foregroundColor(.secondary)
+                }
             }
         }
+        .padding(8)
     }
+    
+    func getCurrentTimeFormatted(in timeZone: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: timeZone)
+        dateFormatter.dateFormat = "h:mm"
+        return dateFormatter.string(from: Date())
+    }
+    
+    func getCurrentAMSymbol(in timeZone: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: timeZone)
+        dateFormatter.dateFormat = "a"
+        return dateFormatter.string(from: Date())
+    }
+    
 }
