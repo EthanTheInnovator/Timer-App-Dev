@@ -34,9 +34,9 @@ struct WorldClockView: View {
                 self.showModal = true
             }, label: {
                 Image(systemName: "plus")
+                    .padding(5)
             }).sheet(isPresented: self.$showModal) {
                 WorldCityPickerView()
-            })
             })
         }
     }
