@@ -21,6 +21,7 @@ extension Alarm {
         }
         newAlarm.uuid = UUID()
         newAlarm.time = time
+        newAlarm.isActive = true
         newAlarm.registerNotification()
         
         do {
@@ -30,6 +31,29 @@ extension Alarm {
             // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+    
+    public var isOn: Bool {
+        set {
+            isActive = newValue
+            if isActive {
+                registerNotification()
+            }
+            else {
+                cancelNotification()
+            }
+            do {
+                try managedObjectContext?.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+        get {
+            return isActive
         }
     }
     
@@ -67,12 +91,17 @@ extension Alarm {
         timeFormatter.timeStyle = .short
         return timeFormatter.string(from: time!)
     }
+    
 }
 
 extension Collection where Element == Alarm, Index == Int {
     func delete(at indices: IndexSet, from managedObjectContext: NSManagedObjectContext) {
-        indices.forEach { managedObjectContext.delete(self[$0]) }
-
+        indices.forEach {
+            let thisAlarm = self[$0]
+            thisAlarm.cancelNotification()
+            managedObjectContext.delete(thisAlarm)
+        }
+        
         do {
             try managedObjectContext.save()
         } catch {

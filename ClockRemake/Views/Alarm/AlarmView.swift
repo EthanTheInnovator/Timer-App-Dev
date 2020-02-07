@@ -18,7 +18,8 @@ struct AlarmView: View {
     var body: some View {
         NavigationView {
             AlarmListView()
-            .navigationBarTitle("Alarms")
+                .environment(\.managedObjectContext, self.viewContext)
+                .navigationBarTitle("Alarms")
                 .navigationBarItems(
                     leading: EditButton(),
                     trailing: Button(
@@ -31,10 +32,10 @@ struct AlarmView: View {
                         Image(systemName: "plus")
                     }
             )
-            .sheet(isPresented: $showNewAlarmView) {
-                NewAlarmView(isPresented: self.$showNewAlarmView)
-                    .accentColor(Color(.systemPurple))
-                    .environment(\.managedObjectContext, self.viewContext)
+                .sheet(isPresented: $showNewAlarmView) {
+                    NewAlarmView(isPresented: self.$showNewAlarmView)
+                        .accentColor(Color(.systemPurple))
+                        .environment(\.managedObjectContext, self.viewContext)
             }
             .onAppear {
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (authorized, error) in
@@ -46,6 +47,9 @@ struct AlarmView: View {
 }
 
 struct AlarmListView: View {
+    @Environment(\.managedObjectContext)
+    var viewContext
+    
     @FetchRequest(entity: Alarm.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Alarm.time, ascending: true)],
     predicate: NSPredicate(value: true),
     animation: .default)
@@ -55,17 +59,30 @@ struct AlarmListView: View {
         VStack(alignment: .center, spacing: 8) {
             List {
                 ForEach(alarms, id: \.self) { alarm in
-                    HStack {
-                        VStack {
-                            Text("\(alarm.name ?? "")")
-                        }
-//                        Spacer()
-//                        Toggle(isOn: $alarm.isActive) {
-//                            Text("test")
-//                        }
-                    }
+                    AlarmCell(alarm: alarm)
+                }
+                .onDelete { indices in
+                    self.alarms.delete(at: indices, from: self.viewContext)
                 }
             }
+        }
+    }
+}
+
+struct AlarmCell: View {
+    
+    @ObservedObject var alarm: Alarm
+    
+    var body: some View {
+        HStack {
+            VStack {
+                Text("\(alarm.name ?? "")")
+            }
+            Spacer()
+            Toggle(isOn: $alarm.isOn) {
+                Text("")
+            }
+                .labelsHidden()
         }
     }
 }
