@@ -8,6 +8,8 @@
 
 import UIKit
 import SwiftUI
+import CoreData
+import UserNotifications
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -45,6 +47,35 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
+            DispatchQueue.main.async {
+                let uuids = requests.map { (request) -> String in
+                    return request.identifier
+                }
+                var alarms  = [Alarm]()
+                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                let fetchRequest = NSFetchRequest<Alarm>(entityName: "Alarm")
+                do {
+                    alarms = try context.fetch(fetchRequest)
+                } catch {
+                    print(error)
+                }
+                for alarm in alarms {
+                    if alarm.isActive && !uuids.contains(alarm.uuid?.uuidString ?? "bla") {
+                        alarm.isActive = false
+                    }
+                }
+                do {
+                    try context.save()
+                }
+                catch {
+                    print(error)
+                }
+            }
+            
+        }
+        
     }
 
     func sceneWillResignActive(_ scene: UIScene) {

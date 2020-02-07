@@ -25,6 +25,7 @@ struct TimerView: View {
                 Text("Input timer time (in seconds) below")
                 VStack { // Gets time from user
                     TextField("Put time here", text: $userInput)
+                        .keyboardType(.numberPad)
                     VStack { //updates text on screen using given timer invervals
                         Text(countdownString(from: refDate))
                         .font(.title) //sets the font to a "title" font

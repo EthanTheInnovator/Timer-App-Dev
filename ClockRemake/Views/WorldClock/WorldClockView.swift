@@ -37,6 +37,7 @@ struct WorldClockView: View {
             }).sheet(isPresented: self.$showModal) {
                 WorldCityPickerView()
             })
+            })
         }
     }
 }
