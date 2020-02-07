@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E90A82ED23E473B300AFBF7A /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90A82EC23E473B300AFBF7A /* Alarm.swift */; };
+		E98A978623E87512001AD7AD /* NewAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98A978523E87512001AD7AD /* NewAlarmView.swift */; };
+		E98A978823E87AB9001AD7AD /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98A978723E87AB9001AD7AD /* Alarm.swift */; };
 		E9AD2A3523E4657D00200451 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A3423E4657D00200451 /* AppDelegate.swift */; };
 		E9AD2A3723E4657D00200451 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A3623E4657D00200451 /* SceneDelegate.swift */; };
 		E9AD2A3A23E4657D00200451 /* ClockRemake.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A3823E4657D00200451 /* ClockRemake.xcdatamodeld */; };
@@ -22,7 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E90A82EC23E473B300AFBF7A /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		E98A978523E87512001AD7AD /* NewAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlarmView.swift; sourceTree = "<group>"; };
+		E98A978723E87AB9001AD7AD /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Alarm.swift; path = ClockRemake/Views/Alarm.swift; sourceTree = SOURCE_ROOT; };
 		E9AD2A3123E4657D00200451 /* Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9AD2A3423E4657D00200451 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9AD2A3623E4657D00200451 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,8 +54,8 @@
 		E90A82EB23E473A300AFBF7A /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				E98A978723E87AB9001AD7AD /* Alarm.swift */,
 				E9AD2A3823E4657D00200451 /* ClockRemake.xcdatamodeld */,
-				E90A82EC23E473B300AFBF7A /* Alarm.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -103,6 +105,7 @@
 				E9AD2A3B23E4657D00200451 /* TabControllerView.swift */,
 				E9AD2A4B23E4664000200451 /* WorldClockView.swift */,
 				E9AD2A4D23E4664D00200451 /* AlarmView.swift */,
+				E98A978523E87512001AD7AD /* NewAlarmView.swift */,
 				E9AD2A4F23E4665400200451 /* StopwatchView.swift */,
 				E9AD2A5123E4665B00200451 /* TimerView.swift */,
 			);
@@ -180,13 +183,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E98A978623E87512001AD7AD /* NewAlarmView.swift in Sources */,
+				E9AD2A3A23E4657D00200451 /* ClockRemake.xcdatamodeld in Sources */,
 				E9AD2A4C23E4664000200451 /* WorldClockView.swift in Sources */,
 				E9AD2A3523E4657D00200451 /* AppDelegate.swift in Sources */,
-				E90A82ED23E473B300AFBF7A /* Alarm.swift in Sources */,
-				E9AD2A3A23E4657D00200451 /* ClockRemake.xcdatamodeld in Sources */,
 				E9AD2A3C23E4657D00200451 /* TabControllerView.swift in Sources */,
 				E9AD2A4E23E4664D00200451 /* AlarmView.swift in Sources */,
 				E9AD2A5023E4665400200451 /* StopwatchView.swift in Sources */,
+				E98A978823E87AB9001AD7AD /* Alarm.swift in Sources */,
 				E9AD2A5223E4665B00200451 /* TimerView.swift in Sources */,
 				E9AD2A3723E4657D00200451 /* SceneDelegate.swift in Sources */,
 			);

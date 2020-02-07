@@ -10,32 +10,53 @@ import SwiftUI
 
 struct AlarmView: View {
     
+    @Environment(\.managedObjectContext)
+    var viewContext
+    
+    @State var showNewAlarmView = false
+    
     var body: some View {
         NavigationView {
             AlarmListView()
+            .navigationBarTitle("Alarms")
+                .navigationBarItems(
+                    leading: EditButton(),
+                    trailing: Button(
+                        action: {
+                            withAnimation {
+                                self.showNewAlarmView = true
+                            }
+                    }
+                    ) {
+                        Image(systemName: "plus")
+                    }
+            )
+            .sheet(isPresented: $showNewAlarmView) {
+                NewAlarmView(isPresented: self.$showNewAlarmView)
+                    .accentColor(Color(.systemPurple))
+                    .environment(\.managedObjectContext, self.viewContext)
+            }
         }
     }
 }
 
 struct AlarmListView: View {
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Alarm.time, ascending: true)],
-        animation: .default)
+    @FetchRequest(entity: Alarm.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Alarm.time, ascending: true)],
+    predicate: NSPredicate(value: true),
+    animation: .default)
     var alarms: FetchedResults<Alarm>
-
-    @Environment(\.managedObjectContext)
-    var viewContext
     
     var body: some View {
-        List {
-            ForEach(alarms, id: \.self) { alarm in
-                HStack {
-                    VStack {
-                        Text("9:21AM")
-//                        Text(alarm.name)
+        VStack(alignment: .center, spacing: 8) {
+            List {
+                ForEach(alarms, id: \.self) { alarm in
+                    HStack {
+                        VStack {
+                            Text("\(alarm.name ?? "")")
+                        }
+                        Spacer()
+                        
                     }
-                    Spacer()
-                    
                 }
             }
         }
