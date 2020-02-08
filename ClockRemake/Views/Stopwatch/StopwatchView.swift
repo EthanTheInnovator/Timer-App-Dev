@@ -1,11 +1,11 @@
 //
 //  Stopwatch.swift
-//  Timer
+//  Stopwatch
 //
 //  Created by Ethan Humphrey on 1/31/20.
 //  Copyright © 2020 🅱️ Productions. All rights reserved.
 //
-
+//Calculates the difference in time between when the stopwatch was started and the current time using the Date structure and calendars with a few if statements
 import SwiftUI
 struct StopwatchView: View {
     @State private var currentDate: Date = Date() //starting date, @state recreates interface whenever value is changed

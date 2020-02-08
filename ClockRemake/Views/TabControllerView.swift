@@ -40,15 +40,6 @@ struct TabControllerView: View {
                     }
             }
             .tag(2)
-            TimerView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "timer")
-                            .font(.system(size: 25))
-                        Text("Timer")
-                    }
-            }
-            .tag(3)
         }
         .accentColor(Color(.systemPurple))
     }
