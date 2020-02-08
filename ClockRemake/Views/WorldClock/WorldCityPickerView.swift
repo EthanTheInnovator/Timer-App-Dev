@@ -38,6 +38,9 @@ struct WorldCityPickerView: View {
     
     @State private var searchText = ""
     @State private var showCancelButton: Bool = false
+    
+    @Binding var selectedCity: [IbraTimeZone]
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
@@ -82,6 +85,7 @@ struct WorldCityPickerView: View {
                     ForEach(array.filter{searchText == "" || $0.contains(searchText)}, id:\.self) {
                         searchText in
                         Button(action: {
+                            self.selectedCity.append(IbraTimeZone(zone: TimeZone.init(identifier: searchText)!.abbreviation()!, location: searchText))
                             self.presentationMode.wrappedValue.dismiss()
                         }) {
                             Text(searchText)
@@ -98,9 +102,9 @@ struct WorldCityPickerView: View {
 struct WorldCityPickerView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            WorldCityPickerView()
+            WorldCityPickerView(selectedCity: .constant([]))
                 .environment(\.colorScheme, .light)
-            WorldCityPickerView()
+            WorldCityPickerView(selectedCity: .constant([]))
                 .environment(\.colorScheme, .dark)
         }
     }
