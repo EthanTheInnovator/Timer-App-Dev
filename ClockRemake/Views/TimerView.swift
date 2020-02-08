@@ -17,9 +17,10 @@ struct TimerView: View {
         @State private var countDown: Bool = false //if app is counting down
         var timer: Timer {
            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
-            if(self.countDown){ //if timer was told to count down
-                    self.currentDate = Date()
+                if(!self.countDown){ //if timer is paused (adds 1 to keep time consistent)
+                    self.refDate = Date(timeInterval: 1, since: self.refDate)
                 }
+                    self.currentDate = Date()
             }
         }
         var body: some View {
@@ -30,6 +31,7 @@ struct TimerView: View {
                     let timeGiven: Int = Int(self.userInput) ?? 0
                     if(timeGiven > 0){
                         self.refDate = Date(timeIntervalSinceNow: TimeInterval(timeGiven))
+                        self.countDown = true
                     } else {
                         //make an alert saying you need a proper time interval
                     }
@@ -65,10 +67,10 @@ struct TimerView: View {
             let calendar = Calendar(identifier: .gregorian)
             let components = calendar.dateComponents([.day, .hour, .minute, .second], from: currentDate, to: date)
             let resultString: String = ("\(components.hour ?? 0 + (24 * (components.day ?? 0))) : \(components.minute ?? 0) : \(components.second ?? 0)")
-            if(resultString == "00 : 00 : 00" && showAlert == false){ //creates an alert at 0
-                self.showAlert.toggle()
-            }
             //makes a result start with proper formatting, adding days * 24 in hours to account for days in hours, Format: Hours : Minutes : Seconds
+            if(components.second ?? 0 < 0 || components.minute ?? 0 < 0 || components.hour ?? 0 < 0 || components.day ?? 0 < 0 ){ //if going negative / done
+                return "0 : 0 : 0"
+            }
             return resultString
         }
     }

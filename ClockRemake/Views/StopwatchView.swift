@@ -13,9 +13,10 @@ struct StopwatchView: View {
     @State private var timerActive: Bool = false
     var timer: Timer {
        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
-            if(self.timerActive){ //if timer is active, update the stopwatch
-                self.currentDate = Date()
+            if(!self.timerActive){ //if timer is paused (adds 1 to keep time consistent)
+                self.firstDate = Date(timeInterval: 1, since: self.firstDate)
             }
+                self.currentDate = Date()
         }
     }
     //updates text on screen using given timer invervals
