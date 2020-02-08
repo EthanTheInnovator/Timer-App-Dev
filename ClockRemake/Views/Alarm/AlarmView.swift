@@ -6,6 +6,19 @@
 //  Copyright © 2020 🅱️ Productions. All rights reserved.
 //
 
+/*
+
+ Welcome to Ethan's section of this project. Obviously I've had my hands in each different part of the app but this is what I spent the majority of my time on.
+ The AlarmView displays all added alarms. Similar to my Run Mapper app, it uses CoreData to save the alarms and persist them.
+ One interesting thing I collaborated on with Ibra is the "LargeTimeView". This is the view that has the time in large font with the am/pm in small font. We made it a separate view that takes both the time and time zone so that we can use it both in the world clock view and the alarm view.
+ Adding an alarm is simple and just opens the NewAlarmView.
+ To notify the user, I use iOS's notifications. Activating an alarm registers the notification and deactivating it deregisters.
+ If the time is set to earlier than the current time, it schedules the alarm for tomorrow at that time (for morning alarms to work)
+ Lastly, after an alarm goes off the system checks if there is a notification with that ID still pending, and if not changes the state of the alarm to reflect that it has gone off.
+ Enjoy!
+ 
+*/
+
 import SwiftUI
 
 struct AlarmView: View {
