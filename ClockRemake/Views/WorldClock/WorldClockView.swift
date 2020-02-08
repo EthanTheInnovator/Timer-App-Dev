@@ -16,12 +16,14 @@ struct WorldClockView: View {
     
     @State private var showModal: Bool = false
     
+    @State var selectedCity: [IbraTimeZone] = [IbraTimeZone(zone: "\(TimeZone.current.abbreviation() ?? "")", location: "Randolph")]
+    
     var body: some View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(zones) { zone in
-                        IbraTimeZoneRow(timeZone: zone)
+                    ForEach(selectedCity.indices, id:\.self) { idx in
+                        IbraTimeZoneRow(timeZone: self.selectedCity[idx])
                     }
                 }
             }
@@ -36,7 +38,7 @@ struct WorldClockView: View {
                 Image(systemName: "plus")
                     .padding(5)
             }).sheet(isPresented: self.$showModal) {
-                WorldCityPickerView()
+                WorldCityPickerView(selectedCity: self.$selectedCity)
             })
         }
     }
