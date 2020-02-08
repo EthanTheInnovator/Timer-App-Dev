@@ -9,29 +9,38 @@
 import SwiftUI
 struct StopwatchView: View {
     @State var currentDate: Date = Date() //starting date, @state recreates interface whenever value is changed
-    let firstDate: Date = Date()
+    @State var firstDate: Date = Date()
+    @State var timerActive: Bool = false
     var timer: Timer {
        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
-            self.currentDate = Date()
+            if(self.timerActive){ //if timer is active, update the stopwatch
+                self.currentDate = Date()
+            }
         }
     }
     //updates text on screen using given timer invervals
     var body: some View {
         VStack {
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+            Button(action: {
+                self.timerActive = true
+            }) {
                 Text("Start")
             }
             VStack {
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                Button(action: {
+                    self.timerActive = false
+                }) {
                     Text("Stop")
                 }
                 VStack {
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) { //lets user reset clock
+                    Button(action: {
+                        self.firstDate = Date()
+                    }) { //lets user reset clock
                         Text("Reset")
                     }
-                    VStack { //counts up when active
-                        Text(countupString(from: firstDate))
-                        .font(.title) //sets the font to a "title" font
+                    VStack { //shows current stopwatch time
+                            Text(countupString(from: firstDate))
+                            .font(.title) //sets the font to a "title" font
                     }
                     .onAppear(perform: { // called when text appears
                         _ = self.timer
