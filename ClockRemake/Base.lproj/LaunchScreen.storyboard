@@ -35,7 +35,6 @@
                                     <tabBarItem title="World Clock" image="globe" catalog="system" id="Hb0-PH-VGx"/>
                                     <tabBarItem title="Alarm" image="alarm.fill" catalog="system" id="cVn-1J-WkH"/>
                                     <tabBarItem title="Stopwatch" image="stopwatch.fill" catalog="system" id="xSf-wD-dty"/>
-                                    <tabBarItem title="Timer" image="timer" catalog="system" id="YUV-MO-AMM"/>
                                 </items>
                             </tabBar>
                         </subviews>
@@ -59,6 +58,5 @@
         <image name="alarm.fill" catalog="system" width="62" height="64"/>
         <image name="globe" catalog="system" width="64" height="60"/>
         <image name="stopwatch.fill" catalog="system" width="60" height="64"/>
-        <image name="timer" catalog="system" width="64" height="60"/>
     </resources>
 </document>

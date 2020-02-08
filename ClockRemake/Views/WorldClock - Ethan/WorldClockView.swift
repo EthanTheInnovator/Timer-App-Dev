@@ -34,11 +34,7 @@ struct WorldClockView: View {
                 }
             }
             .navigationBarTitle("World Clock")
-            .navigationBarItems(leading: Button(action: {
-                
-            }, label: {
-                Text("Edit")
-                }).disabled(true), trailing: Button(action: {
+            .navigationBarItems(trailing: Button(action: {
                 self.showModal = true
             }, label: {
                 Image(systemName: "plus")

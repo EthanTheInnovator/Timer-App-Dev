@@ -53,12 +53,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		02A139BD23EE6BE2008DF403 /* Stopwatch */ = {
+		02A139BD23EE6BE2008DF403 /* Stopwatch - Tristan */ = {
 			isa = PBXGroup;
 			children = (
 				E9AD2A4F23E4665400200451 /* StopwatchView.swift */,
 			);
-			path = Stopwatch;
+			path = "Stopwatch - Tristan";
 			sourceTree = "<group>";
 		};
 		E90A82EB23E473A300AFBF7A /* CoreData */ = {
@@ -70,22 +70,22 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		E926FEFD23EDB6F90067E33D /* Alarm */ = {
+		E926FEFD23EDB6F90067E33D /* Alarm - Ibra */ = {
 			isa = PBXGroup;
 			children = (
 				E9AD2A4D23E4664D00200451 /* AlarmView.swift */,
 				E98A978523E87512001AD7AD /* NewAlarmView.swift */,
 			);
-			path = Alarm;
+			path = "Alarm - Ibra";
 			sourceTree = "<group>";
 		};
-		E962602423EDCD3C00E71BED /* WorldClock */ = {
+		E962602423EDCD3C00E71BED /* WorldClock - Ethan */ = {
 			isa = PBXGroup;
 			children = (
 				E9AD2A4B23E4664000200451 /* WorldClockView.swift */,
 				0FE57E9923EDB3E0006D994F /* WorldCityPickerView.swift */,
 			);
-			path = WorldClock;
+			path = "WorldClock - Ethan";
 			sourceTree = "<group>";
 		};
 		E9AD2A2823E4657D00200451 = {
@@ -131,9 +131,9 @@
 			isa = PBXGroup;
 			children = (
 				E9AD2A3B23E4657D00200451 /* TabControllerView.swift */,
-				E962602423EDCD3C00E71BED /* WorldClock */,
-				E926FEFD23EDB6F90067E33D /* Alarm */,
-				02A139BD23EE6BE2008DF403 /* Stopwatch */,
+				E962602423EDCD3C00E71BED /* WorldClock - Ethan */,
+				E926FEFD23EDB6F90067E33D /* Alarm - Ibra */,
+				02A139BD23EE6BE2008DF403 /* Stopwatch - Tristan */,
 				E962602223EDC8CD00E71BED /* LargeTimeView.swift */,
 			);
 			path = Views;
