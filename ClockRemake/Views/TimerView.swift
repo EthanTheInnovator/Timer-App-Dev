@@ -15,6 +15,7 @@ struct TimerView: View {
         @State private var userInput: String = "" //gets users input
         @State private var refDate: Date = Date() //date to count down from
         @State private var countDown: Bool = false //if app is counting down
+        @State private var showingAlert = false //tells app if an alert is being displayed
         var timer: Timer {
            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
                 if(!self.countDown){ //if timer is paused (adds 1 to keep time consistent)
@@ -25,16 +26,19 @@ struct TimerView: View {
         }
         var body: some View {
             VStack { //Just tells user to input time
-                Text("Input timer time (in seconds) below")
+                Text("Input timer time (in seconds [Max of 24 hours]) below")
                 //start btn
                 Button(action: {
-                    let timeGiven: Int = Int(self.userInput) ?? 0
+                    var timeGiven: Int = Int(self.userInput) ?? 0
+                    if(timeGiven > 86400){ //sets to 24 hours if > 24 hours
+                        timeGiven = 86400
+                    }
                     if(timeGiven > 0){
                         self.refDate = Date(timeIntervalSinceNow: TimeInterval(timeGiven))
                         self.countDown = true
                         UIApplication.shared.keyWindow?.endEditing(true) //dismisses keyboard
                     } else {
-                        //mabye make an alert saying you need a value > 0
+                        //make alert saying must be > 0
                     }
                 }) {
                     Text("Start")
