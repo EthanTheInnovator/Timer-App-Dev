@@ -13,10 +13,9 @@ struct StopwatchView: View {
     @State private var timerActive: Bool = false
     var timer: Timer {
        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
-            if(!self.timerActive){ //if timer is paused (adds 1 to keep time consistent)
-                self.firstDate = Date(timeInterval: 1, since: self.firstDate)
+            if(self.timerActive){ //only increments time if it is active
+                self.currentDate = Date(timeInterval: 1, since: self.currentDate)
             }
-                self.currentDate = Date()
         }
     }
     //updates text on screen using given timer invervals
@@ -36,6 +35,7 @@ struct StopwatchView: View {
                 VStack {
                     Button(action: {
                         self.firstDate = Date()
+                        self.currentDate = Date()
                     }) { //lets user reset clock
                         Text("Reset")
                     }
