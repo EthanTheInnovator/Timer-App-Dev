@@ -65,9 +65,10 @@ struct IbraTimeZone: Identifiable {
 struct IbraTimeZoneRow: View {
     @State var timeZone: IbraTimeZone
     
-    func getDate() -> String {
+    func getDate(zone: TimeZone) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
+        dateFormatter.timeZone = zone
         return dateFormatter.string(from: Date())
     }
     
@@ -83,7 +84,7 @@ struct IbraTimeZoneRow: View {
                     Spacer()
                 }
                 HStack {
-                    Text(getDate())
+                    Text(getDate(zone: TimeZone.init(abbreviation: timeZone.zone)!))
                     Spacer()
                 }
             }
