@@ -6,22 +6,30 @@
 //  Copyright © 2020 🅱️ Productions. All rights reserved.
 //
 
+// I, Ibrahim Syed, did the World Clock. This is pretty straightforward and taught me a lot about the
+// way SwiftUI works. It starts by automatically adding a row that indicates the local time zone.
+// Next, there is an edit button, which does not work, and an add button. The add button
+// pulls up a list of all the possible time zones built into the apple time zone library
+// from where one can either scroll to choose one or they can type in a search query to find
+// A location of interest. When the item is selected, it gets added to a dynamic array
+// which then automatically adds a new row to the world clock view. There aren't any bugs as far
+// as I can tell. It doesn't have persistance and the city names are kind of weird, but substrings
+// are weird in Swift and I'd rather not mess with them. 
+
 import SwiftUI
 
 struct WorldClockView: View {
     
-    let zones = [IbraTimeZone(zone: "\(TimeZone.current.abbreviation() ?? "")", location: "Randolph"),
-                 IbraTimeZone(zone: "GMT", location: "London"),
-                 IbraTimeZone(zone: "EDT", location: "NYC")]
-    
     @State private var showModal: Bool = false
+    
+    @State var selectedCity: [IbraTimeZone] = [IbraTimeZone(zone: "\(TimeZone.current.abbreviation() ?? "")", location: "Randolph")]
     
     var body: some View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(zones) { zone in
-                        IbraTimeZoneRow(timeZone: zone)
+                    ForEach(selectedCity.indices, id:\.self) { idx in
+                        IbraTimeZoneRow(timeZone: self.selectedCity[idx])
                     }
                 }
             }
@@ -30,13 +38,13 @@ struct WorldClockView: View {
                 
             }, label: {
                 Text("Edit")
-            }), trailing: Button(action: {
+                }).disabled(true), trailing: Button(action: {
                 self.showModal = true
             }, label: {
                 Image(systemName: "plus")
                     .padding(5)
             }).sheet(isPresented: self.$showModal) {
-                WorldCityPickerView()
+                WorldCityPickerView(selectedCity: self.$selectedCity)
             })
         }
     }
