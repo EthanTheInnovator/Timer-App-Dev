@@ -8,9 +8,9 @@
 
 import SwiftUI
 struct StopwatchView: View {
-    @State var currentDate: Date = Date() //starting date, @state recreates interface whenever value is changed
-    @State var firstDate: Date = Date()
-    @State var timerActive: Bool = false
+    @State private var currentDate: Date = Date() //starting date, @state recreates interface whenever value is changed
+    @State private var firstDate: Date = Date()
+    @State private var timerActive: Bool = false
     var timer: Timer {
        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
             if(self.timerActive){ //if timer is active, update the stopwatch

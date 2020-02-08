@@ -10,26 +10,49 @@ import SwiftUI
 
 struct TimerView: View {
     //refreshes timer every 1 second + creates timer
-        @State var currentDate: Date = Date() //starting date, @state recreates interface whenever value is changed
+        @State private var currentDate: Date = Date() //starting date, @state recreates interface whenever value is changed
         @State private var showAlert = false //if alert is being shown
         @State private var userInput: String = "" //gets users input
-        let refDate: Date = Date(timeIntervalSinceNow: 10)
-        let alert: Alert = Alert(title: Text("Timer Over"), message: Text(""), dismissButton: .default(Text("OK")))
+        @State private var refDate: Date = Date() //date to count down from
+        @State private var countDown: Bool = false //if app is counting down
         var timer: Timer {
            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
-                self.currentDate = Date()
+            if(self.countDown){ //if timer was told to count down
+                    self.currentDate = Date()
+                }
             }
         }
         var body: some View {
             VStack { //Just tells user to input time
                 Text("Input timer time (in seconds) below")
+                //start btn
+                Button(action: {
+                    let timeGiven: Int = Int(self.userInput) ?? 0
+                    if(timeGiven > 0){
+                        self.refDate = Date(timeIntervalSinceNow: TimeInterval(timeGiven))
+                    } else {
+                        //make an alert saying you need a proper time interval
+                    }
+                }) {
+                    Text("Start")
+                }
+                //pause btn
+                Button(action: {
+                    self.countDown = !self.countDown //inverts wether or not countdown is happening
+                }) {
+                    if(countDown){
+                        Text("Pause")
+                    } else {
+                        Text("Unpause")
+                    }
+                }
                 VStack { // Gets time from user
                     TextField("Put time here", text: $userInput)
-                        .keyboardType(.numberPad)
+                    .multilineTextAlignment(TextAlignment.center)
+                    .keyboardType(.numberPad) //numpad so only number can be input
                     VStack { //updates text on screen using given timer invervals
-                        Text(countdownString(from: refDate))
-                        .font(.title) //sets the font to a "title" font
-                        .alert(isPresented: $showAlert, content: { self.alert }) //calls alert if at 0
+                            Text(countdownString(from: refDate))
+                            .font(.title) //sets the font to a "title" font
                     }
                     .onAppear(perform: { // called when text appears
                         _ = self.timer
