@@ -14,7 +14,7 @@
 // A location of interest. When the item is selected, it gets added to a dynamic array
 // which then automatically adds a new row to the world clock view. There aren't any bugs as far
 // as I can tell. It doesn't have persistance and the city names are kind of weird, but substrings
-// are weird in Swift and I'd rather not mess with them. 
+// are weird in Swift and I'd rather not mess with them.
 
 import SwiftUI
 
@@ -65,6 +65,13 @@ struct IbraTimeZone: Identifiable {
 struct IbraTimeZoneRow: View {
     @State var timeZone: IbraTimeZone
     
+    func getDate(zone: TimeZone) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeZone = zone
+        return dateFormatter.string(from: Date())
+    }
+    
     var body: some View {
         HStack {
             VStack {
@@ -74,6 +81,10 @@ struct IbraTimeZoneRow: View {
                 }
                 HStack {
                     Text("\(timeZone.zone)")
+                    Spacer()
+                }
+                HStack {
+                    Text(getDate(zone: TimeZone.init(abbreviation: timeZone.zone)!))
                     Spacer()
                 }
             }

@@ -5,7 +5,7 @@
 //  Created by Ethan Humphrey on 1/31/20.
 //  Copyright © 2020 🅱️ Productions. All rights reserved.
 //
-
+// Note: Comments are in each individual view
 import SwiftUI
 
 struct TabControllerView: View {
