@@ -32,8 +32,9 @@ struct TimerView: View {
                     if(timeGiven > 0){
                         self.refDate = Date(timeIntervalSinceNow: TimeInterval(timeGiven))
                         self.countDown = true
+                        UIApplication.shared.keyWindow?.endEditing(true) //dismisses keyboard
                     } else {
-                        //make an alert saying you need a proper time interval
+                        //mabye make an alert saying you need a value > 0
                     }
                 }) {
                     Text("Start")
